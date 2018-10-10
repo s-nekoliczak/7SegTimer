@@ -4,13 +4,13 @@
 #define     SEG_PORT    PORTA
 #define     SEG_DDR     DDRA
 
-#define     SEG_A       PA0     // Seg A
-#define     SEG_B       PA1     // Seg B
-#define     SEG_C       PA2     // Seg C
-#define     SEG_D       PA3     // Seg D
-#define     SEG_E       PA4     // Seg E
-#define     SEG_F       PA5     // Seg F
-#define     SEG_G       PA6     // Seg G
+#define     SEG_A       PA0
+#define     SEG_B       PA1
+#define     SEG_C       PA2
+#define     SEG_D       PA3
+#define     SEG_E       PA4
+#define     SEG_F       PA5
+#define     SEG_G       PA6
 
 
 #define     DIG_PORT    PORTC

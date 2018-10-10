@@ -27,3 +27,20 @@ void reset_timer() {
     SREG = sreg;
 }
 
+int get_ticks() {
+    unsigned char sreg;
+    sreg = SREG;
+    cli();
+    int ticks = TCNT1;
+    SREG = sreg;
+
+    return ticks;
+}
+
+void set_ticks(int ticks) {
+    unsigned char sreg;
+    sreg = SREG;
+    cli();
+    TCNT1 = ticks;
+    SREG = sreg;
+}

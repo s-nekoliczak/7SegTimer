@@ -12,6 +12,7 @@
 #include "pins.h"
 
 volatile int secs;
+volatile int ticks;
 volatile uint8_t is_running;
 char time_str[4];
 
@@ -58,6 +59,7 @@ int main(void) {
     init_timer();
 
     uint8_t is_reset_btn_changed = 0;
+    uint8_t is_pause_btn_changed = 0;
     memset(time_str, 0, strlen(time_str));
 
     while (1) {
@@ -69,11 +71,26 @@ int main(void) {
             if (is_reset_btn_changed == 0) {
                 reset_timer();
                 secs = 0;
+                is_running = 0;
                 is_reset_btn_changed = 1;
-                is_running = !is_running;
             }
         } else {
             is_reset_btn_changed = 0;
+        }
+
+        // Handle pause button presses
+        if(is_pressed(BTN_PIN, BTN_PAUSE)) {
+            if (is_pause_btn_changed == 0) {
+                if(is_running) {
+                    ticks = get_ticks();
+                } else {
+                    set_ticks(ticks);
+                }
+                is_running = !is_running;
+                is_pause_btn_changed = 1;
+            }
+        } else {
+            is_pause_btn_changed = 0;
         }
 
     }

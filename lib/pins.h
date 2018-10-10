@@ -28,4 +28,5 @@
 
 
 #define     BTN_RESET   PD0
+#define     BTN_PAUSE   PD1
 

@@ -26,7 +26,7 @@ int is_pressed(uint8_t pin_port, uint8_t pin) {
         if (pin_port & (1 << pin)) {
 
             // Cycle i times to debounce button
-            for (uint8_t i = 0; i < 5; ++i) {
+            for (uint8_t i = 0; i < 2; ++i) {
                 secs_to_time_str(secs, time_str);
                 disp_time(time_str);
             }

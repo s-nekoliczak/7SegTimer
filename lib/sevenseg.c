@@ -58,6 +58,22 @@ void disp_time(char num[]) {
     }
 }
 
+void light_top_dot() {
+    DOT_PORT |= (1 << DOT_TOP);
+}
+
+void unlight_top_dot() {
+    DOT_PORT &= ~(1 << DOT_TOP);
+}
+
+void light_colon() {
+    DOT_PORT |= 1 << DOT_COLON;
+}
+
+void unlight_colon() {
+    DOT_PORT &= ~(1 << DOT_COLON);
+}
+
 void secs_to_time_str(int secs, char *buf) {
     char str_mins[3];
     char str_secs[3];

@@ -6,3 +6,11 @@ void disp_time(char num[]);
 
 void secs_to_time_str(int secs, char *buf);
 
+void light_top_dot();
+
+void unlight_top_dot();
+
+void light_colon();
+
+void unlight_colon();
+

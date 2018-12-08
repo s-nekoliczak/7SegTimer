@@ -16,6 +16,16 @@ void init_timer() {
     TIMSK |=
             (1  << OCIE1A);
 
+    GICR |=
+            (1 << INT1)     // Enable INT1 interrupt
+        |   (1 << INT0);    // Enable INT0 interrupt
+
+    MCUCR |=
+            (1 << ISC11)    // INT1 triggers on rising edge
+        |   (1 << ISC10)
+        |   (1 << ISC01)    // INT0 triggers on falling edge
+        |   (1 << ISC00);
+
 }
 
 void reset_timer() {

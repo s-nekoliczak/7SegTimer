@@ -40,7 +40,7 @@ const uint8_t dig_nums[4] = {
 };
 
 void disp_sing_num(uint8_t digit_pin, uint8_t num) {
-    DIG_PORT = dig_nums[digit_pin];
+    DIG_PORT = (DIG_PORT & 0xF0) | (dig_nums[digit_pin]);
     SEG_PORT = seg_nums[num];
 }
 

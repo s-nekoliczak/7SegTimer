@@ -15,6 +15,7 @@
 volatile int secs;
 volatile int target_secs;
 volatile uint8_t is_running;
+volatile uint8_t is_finished;
 volatile uint8_t in_set_mode;
 
 char time_str[TIME_STR_SIZE];
@@ -22,7 +23,11 @@ char target_time_str[TIME_STR_SIZE];
 
 ISR(TIMER1_COMPA_vect) {
     if (is_running) {
-        secs += SECS_INCR_AMOUNT;
+        secs -= SECS_INCR_AMOUNT;
+    }
+    if (secs == 0) {
+        is_finished = 1;
+        is_running = 0;
     }
 }
 
@@ -46,7 +51,7 @@ ISR(INT1_vect) {
         if (in_set_mode) {
             target_secs += SECS_JUMP_INTERVAL;
             if (target_secs > MAX_SECS) {
-                target_secs = MIN_SECS;
+                target_secs = MAX_SECS;
             }
         }
     }
@@ -84,9 +89,10 @@ int main(void) {
     light_colon();
     BTN_DDR = 0x00;
 
-    secs = START_SECS;
+    secs = TARGET_START_SECS;
     target_secs = TARGET_START_SECS;
     is_running = 0;
+    is_finished = 0;
     in_set_mode = 0;
 
     uint8_t is_reset_btn_changed = 0;
@@ -108,12 +114,18 @@ int main(void) {
             disp_time(time_str);
         }
 
+        if (is_finished) {
+            // TODO 
+            ;
+        }
+
         // Handle reset button presses
         if(is_pressed(BTN_PIN, BTN_RESET)) {
             if (is_reset_btn_changed == 0) {
                 reset_timer();
-                secs = START_SECS;
+                secs = target_secs;
                 is_running = 0;
+                is_finished = 0;
                 is_reset_btn_changed = 1;
             }
         } else {

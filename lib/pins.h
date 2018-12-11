@@ -1,31 +1,34 @@
 
-#define     SEG_PORT        PORTA
-#define     SEG_DDR         DDRA
 
-#define     SEG_A           PA0
-#define     SEG_B           PA1
-#define     SEG_C           PA2
-#define     SEG_D           PA3
-#define     SEG_E           PA4
-#define     SEG_F           PA5
-#define     SEG_G           PA6
+#define     SEG_PORT        PORTC
+#define     SEG_DDR         DDRC
 
-
-
-#define     DOT_PORT        PORTB
-#define     DOT_DDR         DDRB
-#define     DOT_COLON       PB0
-#define     DOT_TOP         PB1
-
-#define     DIG_PORT        PORTC
-#define     DIG_DDR         DDRC
+#define     SEG_A           PC0
+#define     SEG_B           PC1
+#define     SEG_C           PC2
+#define     SEG_D           PC3
+#define     SEG_E           PC4
+#define     SEG_F           PC5
+#define     SEG_G           PC6
 
 
 
-#define     DIG_0           PC0
-#define     DIG_1           PC1
-#define     DIG_2           PC2
-#define     DIG_3           PC3
+#define     DOT_PORT        PORTA
+#define     DOT_DDR         DDRA
+
+#define     DOT_COLON       PA4
+#define     DOT_TOP         PA5
+
+
+
+#define     DIG_PORT        PORTA
+#define     DIG_DDR         DDRA
+
+#define     DIG_0           PA0
+#define     DIG_1           PA1
+#define     DIG_2           PA2
+#define     DIG_3           PA3
+
 
 
 #define     BTN_PORT        PORTD
